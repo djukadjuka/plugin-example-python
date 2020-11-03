@@ -21,10 +21,12 @@ class PluginManager:
     def run_checked_plugins(self, main_window):
         plugin_context = PluginContext(main_window)
         for plugin in self.plugin_handlers.values():
-            if plugin.is_plugin_enabled():
+            if plugin.is_plugin_enabled() and not plugin.is_plugin_visible():
                 plugin.setup_plugin(plugin_context)
-            else:
+                plugin.show_plugin()
+            elif not plugin.is_plugin_enabled():
                 plugin.tear_down_plugin(plugin_context)
+                plugin.hide_plugin()
 
     def load_and_update_plugins_in_file(self):
         scanned_file = self.load_plugin_file_contents()

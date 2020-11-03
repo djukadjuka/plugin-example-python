@@ -9,6 +9,7 @@ class AbstractPluginHandler:
         self.name = name
         self._checked = False
         self.plugin = None
+        self._visible = False
 
     def setup_plugin(self, plugin_context: PluginContext):
         raise NotImplementedError("Abstract plugin needs to implement "
@@ -26,3 +27,12 @@ class AbstractPluginHandler:
 
     def __str__(self):
         return "{} - {}".format(self.name, self._checked)
+
+    def hide_plugin(self):
+        self._visible = False
+
+    def show_plugin(self):
+        self._visible = True
+
+    def is_plugin_visible(self):
+        return self._visible
