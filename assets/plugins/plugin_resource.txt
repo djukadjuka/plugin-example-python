@@ -1,0 +1,3 @@
+epp.plugins.english_to_polish_translator.english_to_polish_translator=False
+epp.plugins.greetings.greetings=True
+epp.plugins.look_and_feel_organizer.look_and_feel_oragnizer=False
